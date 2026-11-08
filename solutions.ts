@@ -28,3 +28,6 @@ const formatCoordinate = (coordinate: readonly [latitude: number, longitude: num
 };
 
 
+const concatenateArrays = <T>(...arrays: T[][]): T[] => {
+    return arrays.flat();
+}

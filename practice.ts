@@ -1,8 +1,6 @@
-const formatCoordinate = (coordinate: readonly [latitude: number, longitude: number, locationName: string]): string => {
-    const [latitude, longitude, locationName] = coordinate;
+const concatenateArrays = <T>(...arrays: T[][]): T[] => {
+    return arrays.flat();
+}
 
-    return `Location: ${locationName} (${latitude}, ${longitude})`;
-};
-
-const res = formatCoordinate([23.81, 90.41, "Dhaka"]);
-console.log(res);
+const res = concatenateArrays([1, 2], [3, 4], [5]);
+console.log(res); 
