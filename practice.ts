@@ -1,12 +1,21 @@
-const pluckValues = <T, K extends keyof T>(items: T[], key: K): T[K][] => {
-    return items.map((item: T): T[K] => item[key]);
+class Employee {
+    constructor(protected name: string, private baseSalary: number) { };
+
+    getDetails(): string {
+        return `Employee: ${this.name}, Base Salary: ${this.baseSalary}`;
+    }
 }
 
-const users = [
-    { id: 1, name: "Rakib", role: "Admin" },
-    { id: 2, name: "Sadia", role: "Editor" },
-    { id: 3, name: "Tariq", role: "Subscriber" }
-];
+class Manager extends Employee {
+    constructor(name: string, baseSalary: number, private department: string) {
+        super(name, baseSalary);
+    };
 
-const res = pluckValues(users, "role");
-console.log(res); 
+    getRoleInfo(): string {
+        return `Manager of ${this.department}: ${this.name}`;
+    }
+}
+
+const manager = new Manager("Alice", 50000, "Engineering");
+console.log(manager.getDetails());
+console.log(manager.getRoleInfo());
