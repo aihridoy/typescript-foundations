@@ -1,11 +1,14 @@
-const multiplyValue = (value: number, multiplier?: number): number => {
-    if (multiplier !== undefined) {
-        return value * multiplier;
+const processInput = (value: string | number | boolean): string | number => {
+    if (typeof value === "string") {
+        return value.toLowerCase().trim();
+    }
+    else if (typeof value === "number") {
+        return value * 10;
     }
     else {
-        return value * 2;
+        return value === true ? "Active" : "Inactive"
     }
 }
 
-const result = multiplyValue(7, 0);
-console.log(result); 
+const res = processInput(false);
+console.log(res);
