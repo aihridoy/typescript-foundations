@@ -30,25 +30,25 @@ const formatCoordinate = (coordinate: readonly [latitude: number, longitude: num
 
 const concatenateArrays = <T>(...arrays: T[][]): T[] => {
     return arrays.flat();
-}
+};
 
 
 interface Course {
     title: string,
     students: number,
     isPublished: boolean
-}
+};
 
 const getPopularCourses = (courses: Course[], minStudents: number): Course[] => {
     const filteredCourses = courses.filter((course: Course): boolean =>
         course.isPublished === true && course.students >= minStudents);
     return filteredCourses;
-}
+};
 
 
 const pluckValues = <T, K extends keyof T>(items: T[], key: K): T[K][] => {
     return items.map((item: T): T[K] => item[key]);
-}
+};
 
 
 class Employee {
@@ -56,8 +56,8 @@ class Employee {
 
     getDetails(): string {
         return `Employee: ${this.name}, Base Salary: ${this.baseSalary}`;
-    }
-}
+    };
+};
 
 class Manager extends Employee {
     constructor(name: string, baseSalary: number, private department: string) {
@@ -66,5 +66,18 @@ class Manager extends Employee {
 
     getRoleInfo(): string {
         return `Manager of ${this.department}: ${this.name}`;
-    }
-}
+    };
+};
+
+
+const validateAgeAsync = async (age: number): Promise<string> => {
+    if (age < 18) {
+        throw new Error("Access Denied: Must be 18 or older");
+    };
+
+    return new Promise<string>((resolve): void => {
+        setTimeout((): void => {
+            resolve("Access Granted");
+        }, 1000);
+    });
+};

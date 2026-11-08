@@ -1,21 +1,15 @@
-class Employee {
-    constructor(protected name: string, private baseSalary: number) { };
-
-    getDetails(): string {
-        return `Employee: ${this.name}, Base Salary: ${this.baseSalary}`;
+const validateAgeAsync = async (age: number): Promise<string> => {
+    if (age < 18) {
+        throw new Error("Access Denied: Must be 18 or older");
     }
-}
 
-class Manager extends Employee {
-    constructor(name: string, baseSalary: number, private department: string) {
-        super(name, baseSalary);
-    };
+    return new Promise<string>((resolve): void => {
+        setTimeout((): void => {
+            resolve("Access Granted");
+        }, 1000);
+    })
+};
 
-    getRoleInfo(): string {
-        return `Manager of ${this.department}: ${this.name}`;
-    }
-}
+const res = await validateAgeAsync(15);
+console.log(res);
 
-const manager = new Manager("Alice", 50000, "Engineering");
-console.log(manager.getDetails());
-console.log(manager.getRoleInfo());
