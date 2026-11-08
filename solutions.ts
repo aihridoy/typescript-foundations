@@ -31,3 +31,16 @@ const formatCoordinate = (coordinate: readonly [latitude: number, longitude: num
 const concatenateArrays = <T>(...arrays: T[][]): T[] => {
     return arrays.flat();
 }
+
+
+interface Course {
+    title: string,
+    students: number,
+    isPublished: boolean
+}
+
+const getPopularCourses = (courses: Course[], minStudents: number): Course[] => {
+    const filteredCourses = courses.filter((course: Course): boolean =>
+        course.isPublished === true && course.students >= minStudents);
+    return filteredCourses;
+}
