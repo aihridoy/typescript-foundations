@@ -26,3 +26,5 @@ const formatCoordinate = (coordinate: readonly [latitude: number, longitude: num
 
     return `Location: ${locationName} (${latitude}, ${longitude})`;
 };
+
+
